@@ -5,12 +5,19 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import {FoodAdaptor} from '@/services/food';
+import CONFIG from '../app-config.js'
 
 export default {
   name: 'App',
   components: {
     HelloWorld
-  }
+  },
+    provide() {
+      return {
+          foodService: new FoodAdaptor(CONFIG.BACKEND_URL)
+      }
+    }
 }
 </script>
 
@@ -21,6 +28,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+    background-color: #282838;
+    min-height: 100vh;
 }
 </style>
